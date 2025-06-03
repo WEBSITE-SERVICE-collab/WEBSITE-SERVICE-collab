@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanzania City</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            font-size: 2rem;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slider {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: background 1s ease-in-out;
+        }
+
+        .image-name {
+            position: absolute;
+            bottom: 20px;
+            background: green;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 2.5rem;
+            text-transform: capitalize;
+            justify-content: center;
+            align-items: center;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider"></div>
+    <div class="image-name">Inapakia...</div>
+
+    <script>
+        const images = [
+            { url: "img/dar-es-salaam.jpg", name: "Dar-es-salaam" },
+            { url: "img/dar.jpg", name: "Dar-es-salaam" },
+            { url: "img/mwanza-city-tours.jpg", name: "Mwanza" }, 
+            { url: "img/mwanza.webp", name: "Mwanza" },
+            { url: "img/Mwanza-15.jpg", name: "Mwanza" },
+            { url: "img/Mwanza Rock.jpg", name: "Mwanza" },
+            { url: "img/Arusha cc.webp", name: "Arusha" },
+            { url: "img/Arusha.jpg", name: "Arusha" },
+            { url: "img/dodoma-pic.jpg", name: "Dodoma" },
+            { url: "img/Dodoma-Ikulu.jpg", name: "Dodoma Ikulu" },
+            { url: "img/green city.jpg", name: "Mbeya" },
+            { url: "img/Mbeya_City_.jpg", name: "Mbeya" }
+        ];
+
+        let currentIndex = 0;
+        const slider = document.querySelector(".slider");
+        const imageName = document.querySelector(".image-name");
+
+        function changeBackground() {
+            slider.style.backgroundImage = `url('${images[currentIndex].url}')`;
+            imageName.textContent = images[currentIndex].name;
+            currentIndex = (currentIndex + 1) % images.length;
+        }
+
+        changeBackground(); // On page load
+        setInterval(changeBackground, 2000); // Change every 4 seconds
+    </script>
+</body>
+</html>
